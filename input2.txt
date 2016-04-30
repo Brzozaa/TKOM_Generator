@@ -1,0 +1,24 @@
+FUNCTION nazwy_przedmiotow
+FOR (a FROM 1 TO 9;b FROM 0 TO 9;)
+RETURN "przedmiot" + a + b;
+FUNCTION generuj_date
+FOR (a FROM 0 TO 2;b FROM 0 TO 9;c FROM 0 TO 9;)
+RETURN "2016-" + c + "-" + a + b;
+GENERATE
+INTO FAKTURY
+WITH COLUMNS :
+Faktura_Id;int;linear(1,100000);
+Data_zaplacenia;date;generuj_date
+FOREACH FAKTURY
+GENERATE
+INTO POZYCJE
+WITH COLUMNS :
+Pozycja_Id;int;linear(1,10);
+Faktura_FK;@id;Faktura_Id;
+Przedmiot;nvarchar;nazwy_przedmiotow;
+Ilosc;int;constant(1);
+Wartosc;numeric;normal(100.5,200)
+END COLUMNS
+AMOUNT linear(1,6)
+END COLUMNS
+AMOUNT 100000

@@ -1,0 +1,9 @@
+GENERATE
+INTO KLIENCI
+WITH COLUMNS:
+wiek;int;normal(30,225);
+account_num;nvarchar;accounts.txt;
+imie;nvarchar;forenames.txt;
+nazwisko;nvarchar; names.txt
+END COLUMNS
+AMOUNT 10000
