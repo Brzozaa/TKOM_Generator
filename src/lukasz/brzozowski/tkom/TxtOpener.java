@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class TxtOpener
+public class TxtOpener implements ITextGenerator
 {
 	public TxtOpener(String fileName)
 	{
@@ -19,6 +19,8 @@ public class TxtOpener
 			Printer.printFileNotFound(fileName);
 		}
 	}
+	
+	@Override
 	public String getNextString()
 	{
 		String line="";

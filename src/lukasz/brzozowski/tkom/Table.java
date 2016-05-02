@@ -29,9 +29,15 @@ public class Table
 		this.amountTokens = tokens;
 	}
 	
+	public void initTableGenerator(TableGenerator gen)
+	{
+		this.gen = gen;
+	}
+	
 	public String identifier;
 	public String parent;
 	public List<Column>columnList;
 	public List<Table>childTables;
 	public List<Token> amountTokens;
+	public TableGenerator gen;
 }

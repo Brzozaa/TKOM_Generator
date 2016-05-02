@@ -7,7 +7,7 @@ import lukasz.brzozowski.tkom.Token.TokenType;
 public class Parser
 {
 	//TODO fix columns bug with last semicolon in last column def
-	//TODO think fixing bug after parsing one nested gendef and moving on to amount
+	//TODO dodaj rozklad Poissona
 	public Parser(String fileName)
 	{
 		this.scanner = new Scanner(fileName);
@@ -99,6 +99,7 @@ public class Parser
 			{
 				Table table = parseGendef(mainTable.identifier);
 				mainTable.addChildTable(table);
+				symbolTable.addTableToSymbolTab(table);
 			}
 			while((token = scanner.getNextToken()).languageConstructNumber == 0); // GENERATE
 			if(token.languageConstructNumber != 3) //END
@@ -351,9 +352,10 @@ public class Parser
 	{
 		Parser parser = new Parser("input2.txt");
 		parser.startParsing();
-		//generator generate
-		//TODO: implement the rest
+		Generator gen = new Generator(parser.symbolTable, "generationscript.txt");
+		gen.generate(new ArrayList<Integer>(), null);
 	}
+	
 	public SymbolTable symbolTable;
 	private Scanner scanner;
 }

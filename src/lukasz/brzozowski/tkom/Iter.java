@@ -7,7 +7,32 @@ public class Iter
 		this.identifier = identifier;
 		this.lowerBound = lowerBound;
 		this.upperBound = upperBound;
+		this.iter = lowerBound;
 	}
+	
+	public Iter(Iter i)
+	{
+		this.identifier = i.identifier;
+		this.lowerBound = i.lowerBound;
+		this.upperBound = i.upperBound;
+		this.iter = lowerBound;
+	}
+	
 	public String identifier;
-	public char lowerBound, upperBound;
+	public char lowerBound, upperBound, iter;
+	
+	public String getNextString()
+	{
+		String toReturn = "";
+		toReturn += iter;
+		if(iter == upperBound)
+		{
+			iter = lowerBound;
+		}
+		else
+		{
+			iter +=1;
+		}
+		return toReturn;
+	}
 }

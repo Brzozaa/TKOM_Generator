@@ -177,7 +177,7 @@ public class Scanner
 		return false;
 	}
 	
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
 		Scanner scanner = new Scanner("input2.txt");
 		Token token=null;
@@ -187,7 +187,7 @@ public class Scanner
 		}
 		while (token != null);
 
-	}
+	}*/
 	
 	private Map<String, Integer> languageSet;
 	private Map<Character, Integer> helpConstructsSet;
